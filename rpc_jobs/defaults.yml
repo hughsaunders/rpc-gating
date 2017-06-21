@@ -21,3 +21,7 @@
     JENKINS_NODE_EXECUTORS: "2"
     jenkins_node_exclusive: true
     allow_jenkins_sudo: true
+    # rpc_leapfrog_params
+    LEAPFROG_TEST_NETWORKS: "0"
+    LEAPFROG_TEST_SERVERS: "0"
+    LEAPFROG_TEST_VOLUMES: "0"

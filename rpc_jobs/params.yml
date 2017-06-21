@@ -148,3 +148,16 @@
       - string:
           name: "RPC_MAAS_BRANCH"
           default: "{RPC_MAAS_BRANCH}"
+
+- parameter:
+    name: rpc_leapfrog_params
+    parameters:
+      - string:
+          name: "LEAPFROG_TEST_NETWORKS"
+          default: "{LEAPFROG_TEST_NETWORKS}"
+      - string:
+          name: "LEAPFROG_TEST_SERVERS"
+          default: "{LEAPFROG_TEST_SERVERS}"
+      - string:
+          name: "LEAPFROG_TEST_VOLUMES"
+          default: "{LEAPFROG_TEST_VOLUMES}"
