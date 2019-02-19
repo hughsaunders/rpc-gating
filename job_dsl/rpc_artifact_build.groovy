@@ -65,7 +65,9 @@ common.globalWraps(){
       // The apt artifacts are built on a long-lived slave
       // with a single executor, so no locking is required.
       stage('Apt'){
-        artifact_build.apt()
+        if (env.BUILD_APT_ARTIFACTS == "YES"){
+          artifact_build.apt()
+        }
       }
 
       // We lock the git job per series to ensure that no
@@ -74,8 +76,10 @@ common.globalWraps(){
       // We use the first available image for the series
       // as the artifacts are not distribution-specific.
       stage('Git'){
-        lock("artifact_git_newton"){
-          artifact_build.git(image_list[0])
+        if (env.BUILD_GIT_ARTIFACTS == "YES"){
+          lock("artifact_git_newton"){
+            artifact_build.git(image_list[0])
+          }
         }
       }
 
@@ -83,8 +87,10 @@ common.globalWraps(){
       // more than one job for each series executes at the
       // same time.
       stage('Python'){
-        lock("artifact_python_newton"){
-          parallel python_parallel
+        if (env.BUILD_PYTHON_ARTIFACTS == "YES"){
+          lock("artifact_python_newton"){
+            parallel python_parallel
+          }
         }
       }
 
